@@ -8,13 +8,16 @@ void main() {
       create: (context) {
         return WeatherProvider();
       },
-      child: WeatherApp()));
+      child: const WeatherApp()));
 }
 
 class WeatherApp extends StatelessWidget {
+  const WeatherApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Provider.of<WeatherProvider>(context).weatherData == null
             ? Colors.blue
@@ -22,7 +25,7 @@ class WeatherApp extends StatelessWidget {
                 .weatherData!
                 .getThemeColor(),
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }
